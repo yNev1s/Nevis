@@ -1,16 +1,13 @@
 
 <h1 align="center">
  <br>
-  <a href="https://github.com/peterhanania"><img src="https://dev.pogy.gg/favicon.ico"></a>
+  <a href="https://github.com/yNev1s"><img src="https://i.imgur.com/59fhtJh.png"></a>
   <br>
-  Pogy the Discord Bot [DJS V13]
+  Nevis - Bot do Discord
  <br>
 </h1>
 
-<h3 align=center>A fully customizable bot built with 147 commands, 11 categories and a dashboard using discord.js v13</h3>
-
-[README-hindi.md](/README-hi-HI.md)
-[README-polish](/README-pl-PL.md)
+<h3 align=center>Um bot full customizável com 147 comandos e um website para a configuração do seu servidor.</h3>
 
 <div align=center>
 
