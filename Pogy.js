@@ -43,12 +43,12 @@ module.exports = class PogyClient extends Client {
 
   validate(options) {
     if (typeof options !== "object")
-      throw new TypeError("Options should be a type of Object.");
+      throw new TypeError("As opções devem ser um tipo de Objeto.");
 
     if (!options.prefix)
-      throw new Error("You must pass a prefix for the client.");
+      throw new Error("Você deve informar um prefixo para o bot.");
     if (typeof options.prefix !== "string")
-      throw new TypeError("Prefix should be a type of String.");
+      throw new TypeError("O prefixo deve ser um tipo de String.");
     this.prefix = options.prefix;
   }
 

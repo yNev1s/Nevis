@@ -7,7 +7,8 @@
   },
   "devDependencies": {
     "eslint": "^7.6.0",
-    "eslint-config-tesseract": "^0.0.3"
+    "eslint-config-tesseract": "^0.0.3",
+    "node": "^16.9.0"
   },
   "dependencies": {
     "@top-gg/sdk": "^3.0.8",
@@ -57,10 +58,18 @@
     "zalgo": "0.0.1",
     "zalgolize": "^1.2.4"
   },
-  "name": "pogy",
+  "name": "nevis",
   "version": "1.0.0",
   "author": "",
   "license": "ISC",
   "keywords": [],
-  "description": ""
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yNev1s/Nevis.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yNev1s/Nevis/issues"
+  },
+  "homepage": "https://github.com/yNev1s/Nevis#readme"
 }
