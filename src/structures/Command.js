@@ -3,9 +3,9 @@ module.exports = class Command {
     this.client = client;
     this.name = options.name || name;
     this.aliases = options.aliases || [];
-    this.description = options.description || "No description provided.";
-    this.category = options.category || "General";
-    this.usage = `${this.name} ${options.usage || ""}` || "No usage provided.";
+    this.description = options.description || "Nenhuma descrição fornecida.";
+    this.category = options.category || "Geral";
+    this.usage = `${this.name} ${options.usage || ""}` || "Nenhum modo de uso fornecido.";
     this.examples = options.examples || [];
     this.disabled = options.disabled || false;
     this.cooldown = "cooldown" in options ? options.cooldown : 5 || 5;
@@ -20,7 +20,7 @@ module.exports = class Command {
 
   // eslint-disable-next-line no-unused-vars
   async run(message, args) {
-    throw new Error(`The run method has not been implemented in ${this.name}`);
+    throw new Error(`O método run não foi implementado em ${this.name}`);
   }
 
   reload() {

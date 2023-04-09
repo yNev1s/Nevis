@@ -80,7 +80,7 @@ module.exports = function (client) {
       if (!category) return;
 
       await user.guild.channels
-        .create(`${user.member.user.username}'s Room`, {
+        .create(`Quarto de ${user.member.user.username}`, {
           type: "GUILD_VOICE",
           parent: category,
         })

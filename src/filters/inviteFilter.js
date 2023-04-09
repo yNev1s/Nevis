@@ -28,7 +28,7 @@ module.exports = async (message) => {
         fetch(`https://discordapp.com/api/invite/${code}`)
           .then((res) => res.json())
           .then((json) => {
-            if (json.message !== "Unknown Invite") {
+            if (json.message !== "Convite inválido") {
               message.delete().catch(() => {});
               message.channel.sendCustom({
                 embed: {
@@ -44,9 +44,9 @@ module.exports = async (message) => {
                   footer: {
                     text: message.deletable
                       ? ""
-                      : "Couldn't delete the message due to missing permissions.",
+                      : "Não foi possível excluir a mensagem devido a permissões ausentes.",
                   },
-                  description: "No invite links here",
+                  description: "Links de convite não são permitidos aqui.",
                 },
               });
             }
@@ -71,9 +71,9 @@ module.exports = async (message) => {
               footer: {
                 text: message.deletable
                   ? ""
-                  : "Couldn't delete the message due to missing permissions.",
+                  : "Não foi possível excluir a mensagem devido a permissões ausentes.",
               },
-              description: "No invite links here",
+              description: "Links de convite não são permitidos aqui.",
             },
           });
         }

@@ -29,7 +29,7 @@ function trimArray(arr, maxLen = 10) {
   if (arr.length > maxLen) {
     const len = arr.length - maxLen;
     arr = arr.slice(0, maxLen);
-    arr.push(`and **${len}** more...`);
+    arr.push(`e mais **${len}**...`);
   }
   return arr;
 }
@@ -47,7 +47,7 @@ function trimStringFromArray(arr, maxLen = 2048, joinChar = "\n") {
     string = string.slice(0, string.length - (string.length - diff));
     string = string.slice(0, string.lastIndexOf(joinChar));
     string =
-      string + `\nAnd **${arr.length - string.split("\n").length}** more...`;
+      string + `\ne mais **${arr.length - string.split("\n").length}**...`;
   }
   return string;
 }
@@ -75,11 +75,11 @@ function getRange(arr, current, interval) {
 function getOrdinalNumeral(number) {
   number = number.toString();
   if (number === "11" || number === "12" || number === "13")
-    return number + "th";
-  if (number.endsWith(1)) return number + "st";
-  else if (number.endsWith(2)) return number + "nd";
-  else if (number.endsWith(3)) return number + "rd";
-  else return number + "th";
+    return number + "º";
+  if (number.endsWith(1)) return number + "º";
+  else if (number.endsWith(2)) return number + "º";
+  else if (number.endsWith(3)) return number + "º";
+  else return number + "º";
 }
 
 /**

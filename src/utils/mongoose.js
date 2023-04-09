@@ -7,17 +7,17 @@ module.exports = {
     mongoose.Promise = global.Promise;
 
     mongoose.connection.on("err", (err) => {
-      logger.error(`Mongoose connection error: ${err.stack}`, {
+      logger.error(`Erro de conexão do Mongoose: ${err.stack}`, {
         label: "Database",
       });
     });
 
     mongoose.connection.on("disconnected", () => {
-      logger.error(`Mongoose connection lost`, { label: "Database" });
+      logger.error(`Conexão com o Mongoose perdida.`, { label: "Database" });
     });
 
     mongoose.connection.on("connected", () => {
-      logger.info(`Mongoose connection connected`, { label: "Database" });
+      logger.info(`Uma conexão com o Mongoose foi estabelecida com sucesso!`, { label: "Database" });
     });
 
     mongoose.set("useNewUrlParser", true);

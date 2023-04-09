@@ -8,12 +8,12 @@ module.exports = class extends Event {
         `${message.author.tag}`,
         message.author.displayAvatarURL({ dynamic: true })
       )
-      .setTitle(`X Missing User Permissions`)
+      .setTitle(`X Você não tem permissão`)
       .setDescription(
-        `Required Permission: \`${permissions.replace("_", " ")}\``
+        `Permissão necessária: \`${permissions.replace("_", " ")}\``
       )
       .setTimestamp()
-      .setFooter({ text: "https://pogy.xyz/" })
+      .setFooter({ text: "https://nevis.website/" })
       .setColor(message.guild.me.displayHexColor);
     if (
       message.channel &&

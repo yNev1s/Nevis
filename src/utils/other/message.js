@@ -51,7 +51,7 @@ module.exports = function (client) {
       guildId: message.guild.id,
     });
 
-    let language = require(`../../data/language/english.json`);
+    let language = require(`../../data/language/portugues.json`);
     if (guildDB)
       language = require(`../../data/language/${guildDB.language}.json`);
     if (afklis) {
@@ -92,7 +92,7 @@ module.exports = function (client) {
       if (maintenance && maintenance.toggle == "true") return;
       if (autoResponseCooldown.has(message.author.id))
         return message.channel.sendCustom(
-          `${message.client.emoji.fail} Slow Down - ${message.author}`
+          `${message.client.emoji.fail} Calma aí! - ${message.author}`
         );
 
       message.channel.sendCustom(
@@ -246,7 +246,7 @@ module.exports = function (client) {
       const command = JSON.parse(customCommandSettings.content);
       return message.channel.sendCustom(command).catch((e) => {
         message.channel.sendCustom(
-          `There was a problem sending your embed, which is probably a JSON error.\nRead more here --> https://pogy.xyz/embeds\n\n__Error:__\n\`${e}\``
+          `Ocorreu um erro ao enviar sua embed, provavelmente pode ser um erro JSON.\nLeia mais aqui --> https://nevis.website/embeds\n\n__Erro:__\n\`${e}\``
         );
       });
     }

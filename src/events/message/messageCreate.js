@@ -55,7 +55,7 @@ module.exports = class extends Event {
         await Guild.create({
           guildId: message.guild.id,
           prefix: config.prefix,
-          language: "english",
+          language: "portugues",
         });
 
         settings = await Guild.findOne({
@@ -66,20 +66,14 @@ module.exports = class extends Event {
       if (message.content.match(mentionRegex)) {
         //if (!settings) return message.channel.sendCustom('Oops, this server was not found in the database. Please try to run the command again now!');
 
-        const proofita = `\`\`\`css\n[     Prefix: ${
-          settings.prefix || "!"
-        }     ]\`\`\``;
-        const proofitaa = `\`\`\`css\n[      Help: ${
-          settings.prefix || "!"
-        }help    ]\`\`\``;
+        const prefixstart = `\`${settings.prefix || "n!"}\``;
+        const startingcmd = `\`${settings.prefix || "n!"}ajuda\``;
         const embed = new MessageEmbed()
-          .setTitle("Hello, I'm Pogy. What's Up?")
-          .addField(`Prefix`, proofita, true)
-          .addField(`Usage`, proofitaa, true)
+          .setTitle("Olá, sou o Nevis.")
           .setDescription(
-            `\nIf you like Pogy, Consider [voting](https://top.gg/bot/767705905235099658), or [inviting](${config.invite_link}) it to your server! Thank you for using Pogy, we hope you enjoy it, as we always look forward to improve the bot`
+            `Você pode ver meus comandos digitando **${prefixstart}ajuda** na área de texto.\n\n:incoming_envelope:┆Me adicione!\nMe adicione ao seu servidor! Você pode clicar [aqui](https://discord.com/api/oauth2/authorize?client_id=1091738508282052688&permissions=8&scope=bot%20applications.commands) para me adicionar. (Isso me deixa muito feliz, sabia?)\n:question:┆Precisa de ajuda?\nSe você precisar de ajuda com alguma função minha, você pode entrar no meu servidor e lá iremos te ajudar com isso. Você pode entrar lá clicando [aqui](https://discord.gg/DDejTvt46r)!\n:lady_beetle:┆Encontrou um bug?\nReporte **todos** os bugs usando: \`/reportar bug\`!`
           )
-          .setFooter("Thank you for using Pogy!!")
+          .setFooter("Obrigado por me adicionar.")
           .setColor("#FF2C98");
         message.channel.sendCustom(embed);
       }
@@ -87,7 +81,7 @@ module.exports = class extends Event {
       // Add increment after every fucking message lmfao!
       if (metricsEnabled) metrics.increment("messages_seen");
 
-      let mainPrefix = settings ? settings.prefix : "!";
+      let mainPrefix = settings ? settings.prefix : "n!";
 
       const prefix = message.content.match(mentionRegexPrefix)
         ? message.content.match(mentionRegexPrefix)[0]
@@ -122,7 +116,7 @@ module.exports = class extends Event {
           if (maintenanceCooldown.has(message.author.id)) return;
 
           message.channel.sendCustom(
-            `Pogy is currently undergoing maintenance which won't allow anyone to access Pogy's Commands. Feel free to try again later. For updates: ${config.discord}`
+            `Atualmente estou em manutenção, por isso não é possível usar meus comandos. Tente novamente mais tarde. Para mais informações entre no meu [discord](${config.discord})`
           );
 
           maintenanceCooldown.add(message.author.id);
@@ -166,8 +160,8 @@ module.exports = class extends Event {
         // Check if user is Blacklisted
         if (userBlacklistSettings && userBlacklistSettings.isBlacklisted) {
           logger.warn(
-            `${message.author.tag} tried to use "${cmd}" command but the user is blacklisted`,
-            { label: "Commands" }
+            `${message.author.tag} tentou usar o comando "${cmd}" mas ele está em minha blacklist!`,
+            { label: "Comandos" }
           );
           return;
         }
@@ -175,7 +169,7 @@ module.exports = class extends Event {
         // Check if server is Blacklisted
         if (guildBlacklistSettings && guildBlacklistSettings.isBlacklisted) {
           logger.warn(
-            `${message.author.tag} tried to use "${cmd}" command but the guild is blacklisted`,
+            `${message.author.tag} tentou usar o comando "${cmd}" mas o servidor está em minha blacklist!`,
             { label: "Commands" }
           );
           return;
@@ -187,15 +181,15 @@ module.exports = class extends Event {
             .sendCustom(
               ` ${
                 message.client.emoji.fail
-              } Please wait **${rateLimit}** before running the **${cmd}** command again - ${
+              } Calma lá meu patrão! Aguarde **${rateLimit}** segundos antes de usar este comando novamente. - ${
                 message.author
               }\n\n${
                 number === 1
-                  ? "*Did You know that Pogy has its own dashboard? `https://pogy.xyz/dashboard`*"
+                  ? "*Você conhece o painel de configuração do Nevis? Venha conhecer clicando [aqui](https://nevis.website/dashboard)*"
                   : ""
               }${
                 number === 2
-                  ? "*You can check our top.gg page at `https://vote.pogy.xyz`*"
+                  ? "*Você pode dar uma olhadinha na nossa página do tog.gg (e votar em mim, claro) [aqui](https://aindanao)*"
                   : ""
               }`
             )
@@ -219,16 +213,16 @@ module.exports = class extends Event {
                 `${this.client.user.tag}`,
                 message.client.user.displayAvatarURL({ dynamic: true })
               )
-              .setTitle(`<:wrong:822376943763980348> Missing Bot Permissions`)
+              .setTitle(`<:wrong:822376943763980348> Não tenho permissão :(`)
               .setDescription(
-                `Command Name: **${
+                `Comando: **${
                   command.name
-                }**\nRequired Permission: **${missingPermissions
+                }**\nPermissão necessária: **${missingPermissions
                   .map((p) => `${p}`)
                   .join(" - ")}**`
               )
               .setTimestamp()
-              .setFooter("https://pogy.xyz")
+              .setFooter("https://nevis.website")
               .setColor(message.guild.me.displayHexColor);
             return message.channel.sendCustom(embed).catch(() => {});
           }
@@ -245,16 +239,16 @@ module.exports = class extends Event {
                 `${message.author.tag}`,
                 message.author.displayAvatarURL({ dynamic: true })
               )
-              .setTitle(`<:wrong:822376943763980348> Missing User Permissions`)
+              .setTitle(`<:wrong:822376943763980348> Você não tem permissão!`)
               .setDescription(
-                `Command Name: **${
+                `Comando: **${
                   command.name
-                }**\nRequired Permission: **${missingPermissions
+                }**\nPermissão necessária: **${missingPermissions
                   .map((p) => `${p}`)
                   .join("\n")}**`
               )
               .setTimestamp()
-              .setFooter("https://pogy.xyz")
+              .setFooter("https://nevis.website")
               .setColor(message.guild.me.displayHexColor);
             return message.channel.sendCustom(embed).catch(() => {});
           }
@@ -270,7 +264,7 @@ module.exports = class extends Event {
 
         if (command.disabled)
           return message.channel.sendCustom(
-            `The owner has disabled the following command for now. Try again Later!\n\nFor Updates: ${config.discord}`
+            `Este comando foi desabilitado pelos menus desenvolvedores. Para mais informações acesse o meu [discord](${config.discord}).`
           );
 
         await this.runCommand(message, cmd, args).catch((error) => {
@@ -288,15 +282,15 @@ module.exports = class extends Event {
       !message.channel.permissionsFor(message.guild.me).has("EMBED_LINKS")
     )
       return message.channel.sendCustom(
-        `${message.client.emoji.fail} Missing bot Permissions - **Embeds Links**`
+        `${message.client.emoji.fail} Não tenho permissão :(`
       );
 
     const command =
       this.client.botCommands.get(cmd.toLowerCase()) ||
       this.client.botCommands.get(this.client.aliases.get(cmd.toLowerCase()));
     logger.info(
-      `"${message.content}" (${command.name}) ran by "${message.author.tag}" (${message.author.id}) on guild "${message.guild.name}" (${message.guild.id}) channel "#${message.channel.name}" (${message.channel.id})`,
-      { label: "Command" }
+      `"${message.author.tag}" (${message.author.id}) usou o comando "${message.content}" (${command.name}) no servidor "${message.guild.name}" (${message.guild.id}) no canal "#${message.channel.name}" (${message.channel.id})`,
+      { label: "Comandos" }
     );
 
     await command.run(message, args);
@@ -318,7 +312,7 @@ module.exports = class extends Event {
         // check the if the duration the command was run, is more than the cooldown
         return moment
           .duration(cooldown - difference)
-          .format("D [days], H [hours], m [minutes], s [seconds]", 1); // returns a string to send to a channel
+          .format("D [dias], H [horas], m [minutos], s [segundos]", 1); // returns a string to send to a channel
       } else {
         ratelimits[command.name] = Date.now(); // set the key to now, to mark the start of the cooldown
         this.ratelimits.set(message.author.id, ratelimits); // set it

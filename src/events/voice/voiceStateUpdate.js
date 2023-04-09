@@ -67,28 +67,28 @@ module.exports = class extends Event {
 
           if (oldState.channelId && oldState.channel) {
             if (typeof oldState.channel.parent !== "undefined") {
-              oldChannelName = `**Category:** ${oldparentname}\n\t**Name:** ${oldchannelname}\n**ID: **${oldchanelid}`;
+              oldChannelName = `**Categoria:** ${oldparentname}\n\t**Nome:** ${oldchannelname}\n**ID: **${oldchanelid}`;
             } else {
-              oldChannelName = `-\n\t**Name:** ${oldparentname}\n**ID:** ${oldchanelid}`;
+              oldChannelName = `-\n\t**Nome:** ${oldparentname}\n**ID:** ${oldchanelid}`;
             }
           } else {
-            oldChannelName = `[Stage Channel]`;
+            oldChannelName = `[Canal]`;
           }
           if (newState.channelId && newState.channel) {
             if (typeof newState.channel.parent !== "undefined") {
-              newChannelName = `**Category:** ${newparentname}\n\t**Name:** ${newchannelname}\n**ID:** ${newchanelid}`;
+              newChannelName = `**Categoria:** ${newparentname}\n\t**Nome:** ${newchannelname}\n**ID:** ${newchanelid}`;
             } else {
-              newChannelName = `-\n\t**Name:** ${newchannelname}**\n**ID:** ${newchanelid}`;
+              newChannelName = `-\n\t**Nome:** ${newchannelname}**\n**ID:** ${newchanelid}`;
             }
           } else {
-            newChannelName = `[Stage Channel]`;
+            newChannelName = `[Canal]`;
           }
 
           // JOINED V12
           if (!oldState.channelId && newState.channelId) {
             const joinembed = new discord.MessageEmbed()
               .setAuthor(
-                `${newState.member.user.tag} | Voice Channel Joined!`,
+                `${newState.member.user.tag} | Entrou em um canal de voz.`,
                 newState.member.user.displayAvatarURL()
               )
               .addField("member", `${newState.member}`, true)
@@ -118,7 +118,7 @@ module.exports = class extends Event {
           if (oldState.channelId && !newState.channelId) {
             const leaveembed = new discord.MessageEmbed()
               .setAuthor(
-                `${newState.member.user.tag} | Voice Channel Left!`,
+                `${newState.member.user.tag} | Saiu de um canal de voz.`,
                 newState.member.user.displayAvatarURL()
               )
               .addField("member", `${newState.member}`, true)
@@ -150,11 +150,11 @@ module.exports = class extends Event {
             if (oldState.channelId !== newState.channelId) {
               const moveembed = new discord.MessageEmbed()
                 .setAuthor(
-                  `${newState.member.user.tag} | Moved Voice Channels`,
+                  `${newState.member.user.tag} | Foi movido de um canal de voz.`,
                   newState.member.user.displayAvatarURL()
                 )
-                .addField("Left", `${oldChannelName}`, true)
-                .addField("Joined", `${newChannelName}`, true)
+                .addField("Saiu", `${oldChannelName}`, true)
+                .addField("Entrou", `${newChannelName}`, true)
                 .setColor(colorYellow)
                 .setTimestamp()
                 .setFooter({ text: `ID: ${newState.member.user.id}` });

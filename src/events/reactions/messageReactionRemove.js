@@ -47,36 +47,36 @@ module.exports = class extends Event {
 
         let addEmbed = new MessageEmbed()
           .setAuthor(
-            "Role Added",
-            `https://v2.pogy.xyz/logo.png`,
+            "Cargo Adicionado",
+            `https://nevis.website/logo.png`,
             `${message.url}`
           )
           .setDescription(
-            `You have recieved the **${rrRole.name}** Role by reacting in ${guildName}`
+            `Você recebeu o cargo **${rrRole.name}** em ${guildName}.`
           )
-          .setFooter({ text: "https://pogy.xyz/" })
+          .setFooter({ text: "https://nevis.website/" })
           .setColor(message.client.color.green);
 
         let remEmbed = new MessageEmbed()
           .setAuthor(
-            "Role Removed",
-            `https://v2.pogy.xyz/logo.png`,
+            "Cargo Removido",
+            `https://nevis.website/logo.png`,
             `${message.url}`
           )
           .setDescription(
-            `You have removed the **${rrRole.name}** Role by reacting in ${guildName}`
+            `Você retirou o seu cargo **${rrRole.name}** no servidor ${guildName}.`
           )
-          .setFooter({ text: "https://pogy.xyz/" })
+          .setFooter({ text: "https://nevis.website/" })
           .setColor(message.client.color.green);
 
         let errorReaction = new MessageEmbed()
           .setAuthor(
-            "Reaction Error",
-            `https://v2.pogy.xyz/logo.png`,
+            "Erro",
+            `https://nevis.website/logo.png`,
             `${message.url}`
           )
-          .setDescription(`A reaction error has occured!`)
-          .setFooter({ text: "https://pogy.xyz/" })
+          .setDescription(`Ocorreu um erro.`)
+          .setFooter({ text: "https://nevis.website/" })
           .setColor(message.client.color.green);
 
         if (reactionCooldown.has(user.id)) return;

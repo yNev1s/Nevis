@@ -35,25 +35,25 @@ module.exports = class extends Event {
 
           if (logging.server_events.role_update == "true") {
             const embed = new discord.MessageEmbed()
-              .setDescription(`:pencil: ***Role Updated***`)
+              .setDescription(`:pencil: ***Cargo Atualizado***`)
 
-              .setFooter({ text: `Role ID: ${newRole.id}` })
+              .setFooter({ text: `ID: ${newRole.id}` })
               .setTimestamp()
               .setColor(color);
 
             if (oldRole.name !== newRole.name) {
               embed.addField(
-                "Name Update",
+                "Nome Atualizado",
                 `${oldRole.name} --> ${newRole.name}`,
                 true
               );
             } else {
-              embed.addField("Name Update", `Name not updated`, true);
+              embed.addField("Nome novo", `Nenhum`, true);
             }
 
             if (oldRole.color !== newRole.color) {
               embed.addField(
-                "Color Update",
+                "Cor Atualizada",
                 `#${makehex(oldRole.color)} --> #${makehex(newRole.color)}`,
                 true
               );

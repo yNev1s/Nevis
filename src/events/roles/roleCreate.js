@@ -28,10 +28,10 @@ module.exports = class extends Event {
 
           if (logging.server_events.role_create == "true") {
             const embed = new discord.MessageEmbed()
-              .setDescription(`🆕 ***Role Created***`)
-              .addField("Role", `${role}`, true)
-              .addField("Role Name", `${role.name}`, true)
-              .setFooter({ text: `Role ID: ${role.id}` })
+              .setDescription(`🆕 ***Cargo Criado***`)
+              .addField("Cargo", `${role}`, true)
+              .addField("Nome", `${role.name}`, true)
+              .setFooter({ text: `ID: ${role.id}` })
               .setTimestamp()
               .setColor(color);
 

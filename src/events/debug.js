@@ -19,14 +19,14 @@ module.exports = class extends Event {
         logger.info(info, { label: "Debug" });
 
         if (number >= parseInt(config.maintenance_threshold)) {
-          embed = `${info} - ${number} - SAFE MODE REACHED`;
+          embed = `${info} - ${number} - MODO DE SEGURANÇA ALCANÇADO`;
           const maintenanceEmbed = new Discord.MessageEmbed()
             .setDescription(embed)
             .setColor("RED");
 
           webhookClient.sendCustom(maintenanceEmbed);
 
-          console.log("Safe mode reached - Turning maintenance mode on.");
+          console.log("Modo de Segurança Alcançada - Ativando o modo de manutenção.");
           maintenance.toggle = "true";
           await maintenance.save();
           process.exit(1);

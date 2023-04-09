@@ -59,42 +59,42 @@ module.exports = class extends Event {
 
         let slowDownEmbed = new MessageEmbed()
           .setDescription(
-            `${message.client.emoji.fail} Slow Down There, You're on a cooldown\n\n**Role Name:** ${rrRole.name}\n**Guild Name:** ${guildName}`
+            `${message.client.emoji.fail}, calma aí meu patrão! Aguarde um instante e tente novamente.`
           )
           .setColor(message.client.color.red);
 
         let addEmbed = new MessageEmbed()
-          .setAuthor(
-            "Role Added",
-            `https://v2.pogy.xyz/logo.png`,
-            `${message.url}`
-          )
-          .setDescription(
-            `You have recieved the **${rrRole.name}** Role by reacting in ${guildName}`
-          )
-          .setFooter({ text: "https://pogy.xyz/" })
-          .setColor(message.client.color.green);
+        .setAuthor(
+          "Cargo Adicionado",
+          `https://nevis.website/logo.png`,
+          `${message.url}`
+        )
+        .setDescription(
+          `Você recebeu o cargo **${rrRole.name}** em ${guildName}.`
+        )
+        .setFooter({ text: "https://nevis.website/" })
+        .setColor(message.client.color.green);
 
-        let remEmbed = new MessageEmbed()
-          .setAuthor(
-            "Role Removed",
-            `https://v2.pogy.xyz/logo.png`,
-            `${message.url}`
-          )
-          .setDescription(
-            `You have removed the **${rrRole.name}** Role by reacting in ${guildName}`
-          )
-          .setFooter({ text: "https://pogy.xyz/" })
-          .setColor(message.client.color.green);
+      let remEmbed = new MessageEmbed()
+        .setAuthor(
+          "Cargo Removido",
+          `https://nevis.website/logo.png`,
+          `${message.url}`
+        )
+        .setDescription(
+          `Você retirou o seu cargo **${rrRole.name}** no servidor ${guildName}.`
+        )
+        .setFooter({ text: "https://nevis.website/" })
+        .setColor(message.client.color.green);
 
         let errorReaction = new MessageEmbed()
           .setAuthor(
-            "Reaction Role Error",
-            `https://v2.pogy.xyz/logo.png`,
+            "Erro",
+            `https://nevis.website/logo.png`,
             `${message.url}`
           )
           .setDescription(
-            `${message.client.emoji.fail} Failed to Add the role, since I'm Missing the Manage Roles Permission.\n\nPlease let an admin Know.`
+            `${message.client.emoji.fail} Ocorreu um erro ao adicionar o cargo, pois estou sem a permissão **Gerenciar Cargos**.\n\nPor favor, informe um administrador do servidor.`
           )
           .setFooter({ text: "https://pogy.xyz/" })
           .setColor(message.client.color.green);
@@ -422,10 +422,10 @@ module.exports = class extends Event {
                       new discord.MessageEmbed()
                         .setColor(message.client.color.red)
                         .setDescription(
-                          `You already have ${arraylength} open tickets, as the current guild's ticket limit is ${ticketlimit} `
+                          `Ops, você já tem ${arraylength} tickets abertos, que atualmente o limite de tickets é ${ticketlimit} `
                         )
                         .setAuthor(user.tag, user.displayAvatarURL())
-                        .setFooter({ text: "https://pogy.xyz/" }),
+                        .setFooter({ text: "https://nevis.website/" }),
                     ],
                   })
                   .then((m) => {
@@ -483,7 +483,7 @@ module.exports = class extends Event {
                     },
                   ],
                   parent: ticketCategory.id,
-                  reason: `Ticket Module`,
+                  reason: `Ticket`,
                   topic: `**ID:** ${user.id} | **Tag:** ${user.tag}`,
                 })
                 .then(async (chan) => {
@@ -536,10 +536,10 @@ module.exports = class extends Event {
                     embeds: [
                       new MessageEmbed()
                         .setDescription(
-                          `Please use \`${prefix}close\` to close the ticket.`
+                          `Por favor use \`${prefix}fechar\` para fechar o ticket.`
                         )
                         .setColor(message.client.color.red)
-                        .setFooter({ text: "https://pogy.xyz/" }),
+                        .setFooter({ text: "https://nevis.website/" }),
                     ],
                   });
 
@@ -548,14 +548,14 @@ module.exports = class extends Event {
 
                   const embedLog = new discord.MessageEmbed()
                     .setColor(color2)
-                    .setFooter({ text: "https://pogy.xyz/" })
-                    .setTitle("Ticket Created")
+                    .setFooter({ text: "https://nevis.website/" })
+                    .setTitle("Ticket Criado")
                     .setTimestamp()
                     .addField(
-                      "Information",
-                      `**User:** ${user}\n**Ticket Channel: **${
+                      "Informações",
+                      `**Usuário:** ${user}\n**Canal: **${
                         chan.name
-                      }\n**Ticket:** #${serverCase}\n**Date:** ${moment(
+                      }\n**Ticket:** #${serverCase}\n**Data:** ${moment(
                         new Date()
                       ).format("dddd, MMMM Do YYYY")} `
                     );
@@ -563,8 +563,8 @@ module.exports = class extends Event {
                   if (ticketLog) {
                     send(ticketLog, {
                       embeds: [embedLog],
-                      name: `Ticket Logs`,
-                      icon: `https://v2.pogy.xyz/logo.png`,
+                      name: `Ticket - Logs`,
+                      icon: `https://nevis.website/logo.png`,
                     }).catch(() => {});
                   }
                 })
@@ -582,7 +582,7 @@ module.exports = class extends Event {
                         new discord.MessageEmbed()
                           .setColor(message.client.color.red)
                           .setDescription(
-                            "There was an error creating the ticket, please check my permissions or contact support."
+                            "Ocorreu um erro ao criar o ticket, verifique minhas permissões ou entre em contato conosco."
                           ),
                       ],
                     })

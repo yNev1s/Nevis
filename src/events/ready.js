@@ -19,7 +19,7 @@ module.exports = class extends Event {
     });
 
     logger.info(
-      `${this.client.user.tag} is ready to serve ${this.client.guilds.cache.size} guilds.`,
+      `Estou online! Em ${this.client.guilds.cache.size} servidores com ${this.client.users.cache.size} usuários.`,
       { label: "Ready" }
     );
 
@@ -45,7 +45,7 @@ module.exports = class extends Event {
                 const embed = new Discord.MessageEmbed()
                   .setColor(this.client.color.red)
                   .setDescription(
-                    `Hey ${user.username}, Premium in ${guildPremium.name} has Just expired :(\n\n__You can you re-new your server here! [https://pogy.xyz/premium](https://pogy.xyz/premium)__\n\nThank you for purchasing premium Previously! We hope you enjoyed what you purchased.\n\n**- Pogy**`
+                    `Olá ${user.username}, o plano Premium adquirido em ${guildPremium.name} acabou de expirar :(\n\n__Você pode renovar seu servidor aqui! [https://nevis.website/premium](https://nevis.website/premium)__\n\nObrigado por adquirir o Premium anteriormente! Esperamos que tenha gostado do que comprou.\n\n**- Nevis**`
                   );
 
                 user.send({ embeds: [embed] }).catch(() => {});
@@ -53,18 +53,18 @@ module.exports = class extends Event {
 
               const rip = new Discord.MessageEmbed()
                 .setDescription(
-                  `**Premium Subscription**\n\n**Guild:** ${
+                  `**Inscrição Premium**\n\n**Servidor:** ${
                     guildPremium.name
-                  } | **${guildPremium.id}**\nRedeemed by: ${
-                    user.tag || "Unknown"
-                  }\n**Plan:** ${result.premium.plan}`
+                  } | **${guildPremium.id}**\nAtivado por: ${
+                    user.tag || "Desconhecido"
+                  }\n**Plano:** ${result.premium.plan}`
                 )
                 .setColor("RED")
                 .setTimestamp();
 
               await premiumrip
                 .sendCustom({
-                  username: "Pogy Loose Premium",
+                  username: "Nevis - Premium",
                   avatarURL: `${this.client.domain}/logo.png`,
                   embeds: [rip],
                 })

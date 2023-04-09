@@ -121,7 +121,7 @@ module.exports = class extends Event {
           if (logging.message_events.deleted == "true") {
             const embed = new MessageEmbed()
               .setAuthor(
-                `${message.author.tag} | Message Deleted`,
+                `${message.author.tag} | Mensagem Deletada`,
                 message.author.displayAvatarURL({ dynamic: true })
               )
               .setTimestamp()
@@ -134,12 +134,12 @@ module.exports = class extends Event {
 
               embed
                 .setDescription(
-                  `${message.member}'s message got deleted in ${message.channel}`
+                  `${message.member} apagou uma mensagem em ${message.channel}`
                 )
-                .addField("Message", `${message.content}`);
+                .addField("Mensagem", `${message.content}`);
             } else {
               embed.setDescription(
-                `${message.member} deleted an **embed** in ${message.channel}`
+                `${message.member} apagou uma **embed** em ${message.channel}`
               );
             }
 

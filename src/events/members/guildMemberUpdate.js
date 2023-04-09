@@ -35,14 +35,14 @@ module.exports = class extends Event {
             if (oldMember.roles.cache.size < newMember.roles.cache.size) {
               const roleAddembed = new discord.MessageEmbed()
                 .setAuthor(
-                  `${newMember.user.tag} | Role add`,
+                  `${newMember.user.tag} | Cargo Adicionado`,
                   newMember.user.displayAvatarURL({ dynamic: true })
                 )
                 .setTimestamp()
                 .setColor(colorGreen)
                 .setFooter({ text: `ID: ${newMember.id}` })
                 .setDescription(
-                  `**Added Roles**\n Role: ${role}\n User: ${newMember}\n\n ${newMember} Was given the **${role.name}** Role.`
+                  `**Cargos Adicionados**\n Cargo: ${role}\n Usuário: ${newMember}\n\n ${newMember} recebeu o cargo **${role.name}**.`
                 );
 
               if (
@@ -63,14 +63,14 @@ module.exports = class extends Event {
             if (oldMember.roles.cache.size > newMember.roles.cache.size) {
               const roleRemoveembed = new discord.MessageEmbed()
                 .setAuthor(
-                  `${newMember.user.tag} | Role Remove`,
+                  `${newMember.user.tag} | Cargo Removido`,
                   newMember.user.displayAvatarURL({ dynamic: true })
                 )
                 .setTimestamp()
                 .setColor(colorRed)
                 .setFooter({ text: `ID: ${newMember.id}` })
                 .setDescription(
-                  `**Removed Roles**\n Role: ${role}\n User: ${newMember}\n\n The **${role.name}** role was removed from ${newMember}`
+                  `**Cargos Removidos**\n Cargo: ${role}\n Usuário: ${newMember}\n\n O cargo **${role.name}** foi removido de ${newMember}`
                 );
 
               if (
@@ -94,19 +94,19 @@ module.exports = class extends Event {
               if (colorYellow == "#000000")
                 colorYellow = oldMember.client.color.yellow;
 
-              const oldNickname = oldMember.nickname || "`None`";
-              const newNickname = newMember.nickname || "`None`";
+              const oldNickname = oldMember.nickname || "`Nenhum`";
+              const newNickname = newMember.nickname || "`Nenhum`";
 
               const nicknameEmbed = new discord.MessageEmbed()
                 .setAuthor(
-                  `${newMember.user.tag} | Nickname Update`,
+                  `${newMember.user.tag} | Nome Atualizado`,
                   newMember.user.displayAvatarURL({ dynamic: true })
                 )
                 .setTimestamp()
                 .setFooter({ text: `ID: ${newMember.id}` })
                 .setColor(colorYellow)
                 .setDescription(
-                  `**Nickname Update**\n ${newMember}'s **nickname** was changed.`
+                  `**Nome Atualizado**\n ${newMember} mudou de nickname.`
                 )
                 .addField("Nickname", `${oldNickname} --> ${newNickname}`);
 

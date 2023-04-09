@@ -58,15 +58,15 @@ module.exports = async function (channel, message, options) {
 
     // Return Statements
     if (!channel.send || !channel.fetchWebhooks)
-      return console.log("HOOK: Invalid Channel.");
-    if (!message) return console.log("HOOK: Invalid Message.");
+      return console.log("HOOK: Canal inválido.");
+    if (!message) return console.log("HOOK: Mensagem inválida.");
 
     // Configure Settings
     if (!options) options = {};
     options = {
       delete: options.delete || false,
       color: options.color || null,
-      name: options.name || "Message",
+      name: options.name || "Mensagem",
       icon: options.icon || undefined,
     };
     if (isNaN(options.delete)) options.delete = false;
@@ -80,16 +80,16 @@ module.exports = async function (channel, message, options) {
     if (sended) return;
 
     // Assign Webhook
-    let hook = webhooks.find((w) => w.name === "https://pogy.xyz");
+    let hook = webhooks.find((w) => w.name === "https://nevis.website");
     if (!hook) {
       try {
-        hook = await channel.createWebhook("https://pogy.xyz", {
-          avatar: `https://v2.pogy.xyz/logo.png`,
+        hook = await channel.createWebhook("https://nevis.website", {
+          avatar: `https://nevis.website/logo.png`,
         });
       } catch (e) {
         hook = await channel.createWebhook(
-          "https://pogy.xyz",
-          `https://v2.pogy.xyz/logo.png`
+          "https://nevis.website",
+          `https://nevis.website/logo.png`
         );
       }
       return sendHook(hook, message, options);

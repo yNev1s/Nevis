@@ -28,7 +28,7 @@ module.exports = class extends Event {
 
           if (logging.server_events.member_join == "true") {
             const embed = new discord.MessageEmbed()
-              .setTitle(":outbox_tray: Member Left")
+              .setTitle(":outbox_tray: Um membro saiu")
               .setAuthor(
                 `${member.guild.name}`,
                 member.guild.iconURL({ dynamic: true })
@@ -36,7 +36,7 @@ module.exports = class extends Event {
               .setThumbnail(member.user.displayAvatarURL({ dynamic: true }))
               .setDescription(`${member} (**${member.user.tag}**)`)
               .addField(
-                "Account created on",
+                "Conta criada em",
                 moment(member.user.createdAt).format("dddd, MMMM Do YYYY")
               )
               .setTimestamp()

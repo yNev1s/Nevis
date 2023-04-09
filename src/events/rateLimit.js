@@ -11,13 +11,13 @@ module.exports = class extends Event {
     const embed = new Discord.MessageEmbed()
       .setColor("RED")
       .setDescription(
-        `**Time out**\n\`${rl.timeout}ms\`\n**Limit:**\n\`${rl.limit}\`\n\n__**Information**__\n**Method:**${rl.method}\n\n**Path:**\n${rl.path} ${rl.route}`
+        `**Time out**\n\`${rl.timeout}ms\`\n**Limite:**\n\`${rl.limit}\`\n\n__**Informação**__\n**Metodo:**${rl.method}\n\n**Path:**\n${rl.path} ${rl.route}`
       )
       .setTimestamp();
 
     setTimeout(function () {
       webhookClient.sendCustom(embed);
-      logger.info(`Time out: ${rl.timeout}ms. Limit: ${rl.limit}`, {
+      logger.info(`Time out: ${rl.timeout}ms. Limite: ${rl.limit}`, {
         label: "Rate Limit",
       });
     }, rl.timeout + 10);

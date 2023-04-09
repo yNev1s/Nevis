@@ -111,18 +111,18 @@ module.exports = class extends Event {
 
                   const embed = new MessageEmbed()
                     .setAuthor(
-                      `${newMessage.member.user.tag} | Message Edited`,
+                      `${newMessage.member.user.tag} | Mensagem Editada`,
                       newMessage.member.user.displayAvatarURL({ dynamic: true })
                     )
                     .setTimestamp()
                     .setDescription(
                       `
-          ${newMessage.member} edited a message in ${newMessage.channel}\n\n[Jump to message!](${newMessage.url})
+          ${newMessage.member} editou uma mensagem em ${newMessage.channel}\n\n[Ir para a Mensagem](${newMessage.url})
         `
                     )
-                    .addField("Before", oldMessage.content)
-                    .addField("After", newMessage.content)
-                    .setFooter({ text: `Member ID: ${newMessage.member.id}` })
+                    .addField("Mensagem Antiga", oldMessage.content)
+                    .addField("Nova", newMessage.content)
+                    .setFooter({ text: `ID do usuário: ${newMessage.member.id}` })
                     .setColor(newMessage.guild.me.displayHexColor);
 
                   if (

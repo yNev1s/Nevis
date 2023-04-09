@@ -19,7 +19,7 @@ module.exports = class Event {
 
   // eslint-disable-next-line no-unused-vars
   async run(message, args) {
-    throw new Error(`The run method has not been implemented in ${this.name}`);
+    throw new Error(`O método run não foi implementado em ${this.name}`);
   }
 
   reload() {

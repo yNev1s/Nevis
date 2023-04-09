@@ -53,9 +53,9 @@ module.exports = async (message) => {
         footer: {
           text: message.deletable
             ? ""
-            : "Couldn't delete the message due to missing permissions.",
+            : "Não foi possível excluir a mensagem devido a permissões ausentes.",
         },
-        description: "No Links allowed here",
+        description: "Links não são permitidos aqui.",
       },
     });
     return true;

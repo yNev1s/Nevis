@@ -7,7 +7,7 @@ module.exports = class react {
    */
 
   async setURL(dbUrl) {
-    if (!dbUrl) throw new TypeError("A database url was not provided.");
+    if (!dbUrl) throw new TypeError("Um URL de banco de dados não foi fornecido.");
 
     return mongoose.connect(dbUrl, {
       useNewUrlParser: true,
@@ -25,11 +25,11 @@ module.exports = class react {
    */
 
   async reactionCreate(client, guildId, msgid, roleid, emoji, dm, option) {
-    if (!client) throw new TypeError("An client was not provided.");
-    if (!guildId) throw new TypeError("A guild id was not provided.");
-    if (!msgid) throw new TypeError("A message id was not provided.");
-    if (!emoji) throw new TypeError("A reaction/emoji was not provided.");
-    if (!roleid) throw new TypeError("A role id was not provided.");
+    if (!client) throw new TypeError("O bot não foi fornecido.");
+    if (!guildId) throw new TypeError("O id do servidor não foi fornicido.");
+    if (!msgid) throw new TypeError("O id da mensagem não foi fornecido.");
+    if (!emoji) throw new TypeError("Uma reação/emoji não foi fornecida.");
+    if (!roleid) throw new TypeError("Um id de grupo não foi fornecido.");
     dm = dm ? dm : false;
     if (!option) option = 1;
 
@@ -52,7 +52,7 @@ module.exports = class react {
 
     await newRR
       .save()
-      .catch((e) => console.log(`Failed to create reaction role: ${e}`));
+      .catch((e) => console.log(`Ocorreu um erro ao criar o sistema **Cargo por Reção**. Devido ao erro: ${e}`));
     client.react.set(msgid + emoji, {
       guildid: guildId,
       msgid: msgid,
@@ -72,10 +72,10 @@ module.exports = class react {
    */
 
   async reactionDelete(client, guildId, msgid, emoji) {
-    if (!client) throw new TypeError("An client was not provided.");
-    if (!guildId) throw new TypeError("A guild id was not provided.");
-    if (!msgid) throw new TypeError("A message id was not provided.");
-    if (!emoji) throw new TypeError("A reaction/emoji was not provided.");
+    if (!client) throw new TypeError("O bot não foi fornecido.");
+    if (!guildId) throw new TypeError("O id do servidor não foi fornicido.");
+    if (!msgid) throw new TypeError("O id da mensagem não foi fornecido.");
+    if (!emoji) throw new TypeError("Uma reação/emoji não foi fornecida.");
 
     const reactionRole = await serverset.findOne({
       guildid: guildId,
@@ -91,7 +91,7 @@ module.exports = class react {
         reaction: emoji,
         option: reactionRole.option,
       })
-      .catch((e) => console.log(`Failed to delete reaction: ${e}`));
+      .catch((e) => console.log(`Ocorreu um erro ao deletar a reação. Devido ao erro: ${e}`));
 
     client.react.delete(msgid + emoji);
 
@@ -107,11 +107,11 @@ module.exports = class react {
    */
 
   async reactionEdit(client, guildId, msgid, newroleid, emoji, newoption) {
-    if (!client) throw new TypeError("An client was not provided.");
-    if (!guildId) throw new TypeError("A guild id was not provided.");
-    if (!msgid) throw new TypeError("A message id was not provided.");
-    if (!emoji) throw new TypeError("A reaction/emoji was not provided.");
-    if (!newroleid) throw new TypeError("A role id was not provided.");
+    if (!client) throw new TypeError("O bot não foi fornecido.");
+    if (!guildId) throw new TypeError("O id do servidor não foi fornicido.");
+    if (!msgid) throw new TypeError("O id da mensagem não foi fornecido.");
+    if (!emoji) throw new TypeError("Uma reação/emoji não foi fornecida.");
+    if (!newroleid) throw new TypeError("Um id de grupo não foi fornecido.");
     if (!newoption) newoption = 1;
 
     const reactionRole = await serverset.findOne({
@@ -124,7 +124,7 @@ module.exports = class react {
 
     await reactionRole
       .save()
-      .catch((e) => console.log(`Failed to save new prefix: ${e}`));
+      .catch((e) => console.log(`Ocorreu um erro ao salvar o novo prefixo. Devido ao erro: ${e}`));
     client.react.set(msgid + emoji, {
       guildid: guildId,
       msgid: msgid,
@@ -144,8 +144,8 @@ module.exports = class react {
    */
 
   async reactionFetch(client, guildId, msgid, emoji) {
-    if (!client) throw new TypeError("A client was not provided.");
-    if (!guildId) throw new TypeError("A guild id was not provided.");
+    if (!client) throw new TypeError("O bot não foi fornecido.");
+    if (!guildId) throw new TypeError("O id do servidor não foi fornicido.");
     if (!client.fetchforguild.has(guildId)) {
       let allrole = await serverset
         .find({ guildid: guildId })
@@ -173,7 +173,7 @@ module.exports = class react {
    * @param {object} [client] - Discord client, will save the data in a Map to prevent multiple fetches
    */
   async reactionFetchAll(client) {
-    if (!client) throw new TypeError("An client was not provided.");
+    if (!client) throw new TypeError("O bot não foi fornecido.");
     let all = await serverset
       .find({})
       .sort([["guildid", "descending"]])

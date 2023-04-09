@@ -52,23 +52,23 @@ module.exports = class randoStrings {
   numberGenerator(option) {
     if (!option.min)
       throw new Error(
-        "NUMBERGENERATOR - You did not specify the minimum value. Confused? Join our discord: https://discord.gg/vaZACzAm5u"
+        "GERADOR DE NÚMERO - Você não especificou um valor mínimo. Está confuso? Entre no nosso discord: https://discord.gg/DDejTvt46r"
       );
     if (!option.max)
       throw new Error(
-        "NUMBERGENERATOR - You did not specify the maximum value. Confused? Join our discord: https://discord.gg/vaZACzAm5u"
+        "GERADOR DE NÚMERO - Você não especificou um valor máximo. Está confuso? Entre no nosso discord: https://discord.gg/DDejTvt46r"
       );
     if (isNaN(option.min))
       throw new Error(
-        "NUMBERGENERATOR - Your minimum value is not a number. Confused? Join our discord: https://discord.gg/vaZACzAm5u"
+        "GERADOR DE NÚMERO - O valor mínimo informado não é um número.  Está confuso? Entre no nosso discord: https://discord.gg/DDejTvt46r"
       );
     if (isNaN(option.max))
       throw new Error(
-        "NUMBERGENERATOR - Your minimum value is not a number. Confused? Join our discord: https://discord.gg/vaZACzAm5u"
+        "GERADOR DE NÚMERO - O valor mínimo informado não é um número. Está confuso? Entre no nosso discord: https://discord.gg/DDejTvt46r"
       );
     if (option.min > option.max)
       throw new Error(
-        "NUMBERGENERATOR - Your minimum value is higher than the maximum value. Confused? Join our discord: https://discord.gg/vaZACzAm5u"
+        "GERADOR DE NÚMERO - O valor mínimo informado é maior que o valor máximo. Está confuso? Entre no nosso discord: https://discord.gg/DDejTvt46r"
       );
 
     let min = (option.min = Math.ceil(option.min));

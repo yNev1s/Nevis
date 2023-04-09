@@ -29,15 +29,15 @@ module.exports = class extends Event {
           if (logging.message_events.deleted == "true") {
             const embed = new MessageEmbed()
               .setAuthor(
-                `Messages Cleared`,
+                `Mensagem Deletada`,
                 message.guild.iconURL({ dynamic: true })
               )
               .setTimestamp()
               .setDescription(
-                `**${messages.size} messages** in ${message.channel} were deleted.`
+                `**${messages.size} mensagens** foram deletadas no canal ${message.channel}.`
               )
               .setColor(message.guild.me.displayHexColor)
-              .setFooter({ text: `${messages.size} Messages` });
+              .setFooter({ text: `${messages.size} mensagens` });
 
             if (
               channelEmbed &&
